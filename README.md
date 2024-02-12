@@ -9,15 +9,15 @@ config/
 
 settings.py - настройки приложений
 urls.py - файл маршрутизации
-blog/
 
+blog/
 templates/blog - html шаблоны для приложения blog
 admin.py - настройки админки
 models.py - модели приложения
 urls.py - файл маршрутизации приложения
 views.py - контроллеры
-main/
 
+main/
 management/commands
     runapscheduler - кастомная команда начала рассылки
 static - директория с файлами для стилистического оформления сайта
