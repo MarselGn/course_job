@@ -11,15 +11,12 @@ def my_job():
     weak = timedelta(days=7, hours=0, minutes=0)
     month = timedelta(days=30, hours=0, minutes=0)
 
-    mailings = Mail.objects.all().filter(status='Создана') \
-        .filter(is_active=True) \
-        .filter(next_date__lte=datetime.now(pytz.timezone('Europe/Moscow'))) \
-        .filter(end_date__gte=datetime.now(pytz.timezone('Europe/Moscow')))
+    mailings = Mail.objects.all()
 
     for mail in mailings:
         mail.status = 'Запущена'
         mail.save()
-        emails_list = [client.email for client in mail.mail_to.all()]
+        emails_list = [client.email for client in mail.client]
 
         result = send_mail(
             subject=mail.message.title,
